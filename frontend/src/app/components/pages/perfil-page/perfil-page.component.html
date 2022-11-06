@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="content">
+    <app-title title="Perfil de Usuario" fontSize="1.6rem"></app-title>
+    <div class="summary">
+      <div>
+        <h3>Nombre:</h3>
+        <span>{{usuario.nombre}}</span>
+      </div>
+      <div>
+        <h3>Direccion:</h3>
+        <span>{{usuario.direccion}}</span>
+      </div>
+      <div>
+        <h3>Email:</h3>
+        <span>{{usuario.email}}</span>
+      </div>
+      <div *ngIf="usuario.esAdministrador">
+        <span>USUARIO ADMINISTRADOR</span>
+      </div>
+    </div>
+  </div>
+</div>

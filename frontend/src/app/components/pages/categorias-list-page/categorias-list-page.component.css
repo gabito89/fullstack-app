@@ -1,0 +1,65 @@
+.container{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  margin: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+table{
+  width: 100%;
+  border: 1px solid #eeeeee;
+  margin-top: 1rem;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+}
+
+h3{
+  margin-top: 0.5rem;
+  margin-left: 0.3rem;
+  color: grey;
+}
+
+a:hover{
+  opacity: 0.9;
+}
+
+td{
+  height: 3rem;
+}
+
+td img{
+  width: 3rem;
+  height: 3rem;
+  object-fit: cover;
+  border-radius: 100rem;
+}
+td .remove-button{
+  border-radius: 1rem;
+  border: none;
+  padding: 0.5rem;
+  color: #e72929;
+  opacity: 0.7;
+  outline: none;
+}
+
+td .remove-button:hover{
+  opacity: 1;
+  cursor: pointer;
+}
+.btn-add{
+  padding: 1rem;
+  color: white;
+  background:#e72929;
+  display: block;
+  width: 20%;
+  border-radius: 1rem;
+  text-align: center;
+  opacity: 0.7;
+  justify-self: center;
+}
+
+.btn-add:hover{
+  opacity: 1;
+  cursor: pointer;
+}

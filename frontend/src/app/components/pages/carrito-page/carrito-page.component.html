@@ -1,0 +1,52 @@
+<app-title title="Carrito" margin="1.5rem 0 0 2.5rem"></app-title>
+<app-not-found
+  [visible]="!carrito || !carrito.productos.length"
+  mensajeNoEncontrado="El Carrito esta vacio."
+  textoResetLink="Ir al Inicio"
+></app-not-found>
+<div *ngIf="carrito && carrito.productos.length" class="container">
+<ul>
+  <li *ngFor="let carritoProducto of carrito.productos">
+    <div>
+      <img [src]="carritoProducto.producto.imagen" [alt]="carritoProducto.producto.nombre">
+    </div>
+    <div>
+      <a routerLink="/producto/{{carritoProducto.producto.id}}">
+        {{carritoProducto.producto.nombre}}
+      </a>
+    </div>
+    <div>
+      <select #quantitySelect
+      [value]="carritoProducto.cantidad"
+      (change)="cambiarCantidad(carritoProducto, quantitySelect.value)">
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>6</option>
+      <option>7</option>
+      <option>8</option>
+      <option>9</option>
+      <option>10</option>
+    </select>
+    </div>
+    <div>
+      {{carritoProducto.precio | currency}}
+    </div>
+
+    <div>
+      <button class="remove-button" (click)="sacarDelCarrito(carritoProducto)">
+        Quitar
+      </button>
+    </div>
+  </li>
+</ul>
+<div class="checkout">
+  <div>
+    <div class="foods-count">{{carrito.cantidadTotal}}</div>
+    <div class="total-price">{{carrito.precioTotal|currency}}</div>
+  </div>
+
+  <a routerLink="/checkout">Comprar</a>
+</div>
+</div>

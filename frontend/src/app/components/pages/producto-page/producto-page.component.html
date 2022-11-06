@@ -1,0 +1,28 @@
+<app-not-found
+  [visible]="!producto"
+  mensajeNoEncontrado="Producto no encontrado."
+  textoResetLink="Ir al Inicio">
+</app-not-found>
+<div *ngIf="producto" class="container">
+  <img [src]="producto.imagen" [alt]="producto.nombre"/>
+
+  <div class="details">
+    <div class="header">
+      <span class="name">
+        {{producto.nombre}}
+      </span>
+    </div>
+    <div class="origins">
+      <span>
+        {{producto.categoria.nombre}}
+      </span>
+    </div>
+    <div class="price">
+      <span>
+        {{producto.precio | currency}}
+      </span>
+    </div>
+    <button (click)="agregarAlCarrito()">Agregar al Carrito</button>
+  </div>
+</div>
+

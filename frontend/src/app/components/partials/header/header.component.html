@@ -1,0 +1,27 @@
+<header>
+  <div class="container">
+    <a routerLink="/" class="logo">Fullstack E-Commerce</a>
+    <nav>
+      <ul>
+        <li *ngIf="!isAuth">
+          <a routerLink="/login">Login</a>
+        </li>
+        <li *ngIf="isAuth" class="menu-container">
+          <a routerLink="/">{{usuario.nombre}}</a>
+          <div class="menu">
+            <a routerLink="/perfil">Perfil</a>
+            <a routerLink="/seguimiento">Seguimiento</a>
+            <a *ngIf="isAdmin" routerLink="/categorias-list">Categorias</a>
+            <a *ngIf="isAdmin" routerLink="/productos-list">Productos</a>
+            <a (click)="logout()">Salir</a>
+          </div>
+        </li>
+        <li *ngIf="isAuth">
+          <a routerLink="/carrito">
+            Carrito <span *ngIf="carritoCantidad">{{carritoCantidad}}</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>

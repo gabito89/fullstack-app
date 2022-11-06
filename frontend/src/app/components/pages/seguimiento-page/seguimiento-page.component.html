@@ -1,0 +1,28 @@
+<app-title title="Seguimiento" margin="1.5rem 0 0 2.5rem"></app-title>
+<app-not-found
+  [visible]="!pedidos || !pedidos.length"
+  mensajeNoEncontrado="No hay pedidos disponibles."
+  textoResetLink="Ir al Inicio"
+></app-not-found>
+<div *ngIf="pedidos && pedidos.length" class="container">
+  <div *ngFor="let pedido of pedidos">
+    <app-title title="Pedido {{pedido.id}}" margin="1.5rem 0 0 2.5rem"></app-title>
+    <app-title title="Estado {{pedido.estado}} - TOTAL {{pedido.precioTotal | currency}}" margin="1.5rem 0 0 2.5rem" fontSize="0.9rem"></app-title>
+    <ul>
+      <li *ngFor="let item of pedido.items">
+        <div>
+          <img [src]="item.producto.imagen" [alt]="item.producto.nombre">
+        </div>
+        <div>
+            {{item.producto.nombre}}
+        </div>
+        <div>
+            {{item.cantidad}}
+        </div>
+        <div>
+          {{item.precio | currency}}
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

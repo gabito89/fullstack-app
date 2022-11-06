@@ -1,0 +1,40 @@
+<app-not-found
+  [visible]="!productos || !productos.length"
+  mensajeNoEncontrado="No Hay Productos."
+  textoResetLink="Agregar Producto"
+  rutaResetLink="add-producto"
+></app-not-found>
+<div *ngIf="productos && productos.length" class="container">
+  <a class="btn-add" routerLink="/add-producto">Agregar Producto</a>
+  <table>
+    <tr>
+      <td colspan="5">
+        <h3>Productos:</h3>
+      </td>
+    </tr>
+    <tr *ngFor="let producto of productos">
+      <td>
+        <img [src]="producto.imagen"/>
+      </td>
+      <td>
+        {{producto.nombre}}
+      </td>
+      <td>
+        {{producto.descripcion}}
+      </td>
+      <td>
+        {{producto.precio | currency}}
+      </td>
+      <td>
+        {{producto.categoria.nombre}}
+      </td>
+      <td>
+        <div>
+          <button class="remove-button" (click)="sacarProducto(producto.id)">
+            Quitar
+          </button>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>

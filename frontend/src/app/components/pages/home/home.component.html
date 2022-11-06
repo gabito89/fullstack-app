@@ -1,0 +1,31 @@
+<app-search></app-search>
+<app-categoria></app-categoria>
+<app-not-found
+[visible]="!productos || !productos.length"
+textoResetLink="Restablecer Busqueda">
+</app-not-found>
+<ul>
+  <li *ngFor="let producto of productos">
+    <a routerLink="/producto/{{producto.id}}">
+      <img [src]="producto.imagen" [alt]="producto.nombre" />
+      <div class="content">
+        <div class="name">
+          {{producto.nombre}}
+        </div>
+        <div class="product-item-footer">
+          <div class="origins">
+            <span>
+              {{producto.categoria.nombre}}
+            </span>
+          </div>
+        </div>
+
+        <div class="price">
+          <span>
+            {{producto.precio | currency}}
+          </span>
+        </div>
+      </div>
+    </a>
+  </li>
+</ul>

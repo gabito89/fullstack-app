@@ -1,0 +1,34 @@
+<app-not-found
+  [visible]="!categorias || !categorias.length"
+  mensajeNoEncontrado="No Hay Categorias."
+  textoResetLink="Agregar Categoría"
+  rutaResetLink="add-categoria"
+></app-not-found>
+<div *ngIf="categorias && categorias.length" class="container">
+  <a class="btn-add"routerLink="/add-categoria">Agregar Categoria</a>
+  <table>
+    <tr>
+      <td colspan="5">
+        <h3>Categorias:</h3>
+      </td>
+    </tr>
+    <tr *ngFor="let categoria of categorias">
+      <td>
+        {{categoria.nombre}}
+      </td>
+      <td>
+        <span *ngIf="categoria.estado">Activo</span>
+        <span *ngIf="!categoria.estado">Inactivo</span>
+      </td>
+      <td>
+        <div *ngIf="categoria.estado">
+          <button class="remove-button" (click)="sacarCategoria(categoria._id)">
+            Quitar
+          </button>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
