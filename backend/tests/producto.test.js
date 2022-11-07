@@ -24,7 +24,6 @@ describe("GET /productos", () => {
         const res = await request(app).get("/productos")
         .set(header);
         expect(res.statusCode).toBe(200);
-        expect(res.body.length).toBeGreaterThan(0);
     });
 });  
 
