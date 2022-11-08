@@ -40,7 +40,7 @@ router.route('')
         try{        
             const pedido= await PedidoController.getPedidoUsuarioActual(req.user.id);
             if(!pedido){
-                res.status(status_HTTP.HTTP_BAD_REQUEST).send("Pedido no Encontrado.");
+                res.status(status_HTTP.HTTP_NOT_FOUND).send("Pedido no Encontrado.");
                 return
             }
             const pedidoConfirmado= await PedidoController.ConfirmarPedido(pedido);
