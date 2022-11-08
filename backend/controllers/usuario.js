@@ -2,7 +2,7 @@ require('mongoose');
 const Usuario = require('../models/usuario');
 const jwt=require('jsonwebtoken');
 
-const addUser = async (email,nombre,direccion,clave) => {
+const addUser = async (email,nombre,direccion,clave,esAdministrador) => {
 
     let existUser = await Usuario.findOne({ email: email });
     if(!existUser) {
@@ -19,7 +19,7 @@ const addUser = async (email,nombre,direccion,clave) => {
                 nombre: nombre,
                 direccion:direccion,
                 estado:true,
-                esAdministrador:false
+                esAdministrador:esAdministrador
             }
         );
 
@@ -66,7 +66,7 @@ const editUser = async(user) => {
 
 const deleteUser = async(id) => {
 
-    const result = await Usuario.findByIdAndUpdate(id,{$set:{estado:false}},{new:true});
+    const result = await Usuario.findByIdAndRemove(id);
 
     return result;
 }
@@ -77,7 +77,6 @@ const generateTokenReponse = (user) => {
     },process.env.JWT_SECRET,{
       expiresIn:"30d"
     });
-  
     return {
       id: user.id,
       email: user.email,

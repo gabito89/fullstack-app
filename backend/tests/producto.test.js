@@ -31,7 +31,7 @@ describe("POST /productos", () => {
     it("Agregar un producto", async () => {
         var body={
             "categoria_id":"63668e86eb962f48ce17799e",
-            "nombre":"Pizza Veg",
+            "nombre":"Pizza Test Producto",
             "descripcion":"Pizza con vegetales",
             "imagen":"assets/food-6.jpg",
             "precio": 150

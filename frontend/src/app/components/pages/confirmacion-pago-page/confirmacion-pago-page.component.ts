@@ -36,7 +36,7 @@ export class ConfirmacionPagoPageComponent implements OnInit {
     this.pedidoService.confirmar(this.pedido).subscribe({
       next: () => {
         this.carritoService.vaciarCarrito();
-        this.router.navigateByUrl('/seguimiento/' + this.pedido.id);
+        this.router.navigateByUrl('/seguimiento');
         this.toastrService.success(
           'Pedido Confirmado Correctamente',
           'Ok'

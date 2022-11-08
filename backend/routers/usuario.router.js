@@ -4,12 +4,6 @@ const router = express.Router();
 const UsuarioController = require('../controllers/usuario');
 const autenticacion=require('../middleware/auth_middleware');
 
-router.get("/test", 
-    async (req, res) => {
-       res.send("okokkok");
-   }
-);
-
 router.get("/precarga", 
     async (req, res) => {
        const cantidadUsuarios = await UsuarioController.getAllUsers();
@@ -17,7 +11,7 @@ router.get("/precarga",
          res.status(status_HTTP.HTTP_RESOURCE_CONFLICT).send("Precarga ya realizada");
          return;
        }
-       await UsuarioController.addUser("prueba@prueba.com","admin","admin","1234");
+       await UsuarioController.addUser("prueba@prueba.com","admin","admin","1234",true);
        res.status(status_HTTP.HTTP_OK).send("Precarga Completa");
    }
 );
@@ -43,9 +37,9 @@ router.post('/registro',
       let direccion = req.body.direccion;
       let clave = req.body.clave;
       try{
-          const result = await UsuarioController.addUser(email,nombre,direccion,clave);
+          const result = await UsuarioController.addUser(email,nombre,direccion,clave,false);
           if(result){
-              res.status(status_HTTP.HTTP_RESOURCE_CREATED).send(UsuarioController.generateTokenReponse(result));
+              res.status(status_HTTP.HTTP_RESOURCE_CREATED).send(UsuarioController.generateTokenReponse(result.user));
           }else{
             res.status(status_HTTP.HTTP_RESOURCE_CONFLICT).send("El Usuario ya existe.");
           }
@@ -69,8 +63,9 @@ router.use(autenticacion.verify).route('')
       let nombre = req.body.nombre;
       let direccion = req.body.direccion;
       let clave = req.body.clave;
+      let admin = req.body.administrador;
       try{
-          const result = await UsuarioController.addUser(email,nombre,direccion,clave);
+          const result = await UsuarioController.addUser(email,nombre,direccion,clave,admin);
           if(result){
               res.status(status_HTTP.HTTP_RESOURCE_CREATED).send("Usuario Creado correctamente");
           }else{

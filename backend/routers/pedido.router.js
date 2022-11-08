@@ -33,7 +33,6 @@ router.route('')
                 res.status(status_HTTP.HTTP_SERVER_ERROR).send("Error al registrar el pedido.");
             }
         }catch(error){
-            console.log(error);
             res.status(status_HTTP.HTTP_SERVER_ERROR).send("Error al registrar el pedido.Intente nuevamente mas tarde.");
         }
     })
@@ -63,7 +62,6 @@ router.route('/seguimiento')
             else 
                 res.status(status_HTTP.HTTP_NOT_FOUND).send();
         }catch(error){
-            console.log(error);
             res.status(status_HTTP.HTTP_SERVER_ERROR).send("Error al recuperar los pedidos.Intente nuevamente mas tarde.");
         }
     });    

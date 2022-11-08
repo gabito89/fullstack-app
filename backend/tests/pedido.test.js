@@ -5,24 +5,24 @@ const UsuarioController = require('../controllers/usuario');
 
 require("dotenv").config();
 
-const user = UsuarioController.getLogin("prueba@prueba.com", "1234");
-const loggedUser=UsuarioController.generateTokenReponse(user);
-var header={
-    "authorization":loggedUser.token,
-}
 
-beforeEach(async () => {
+var loggedUser="";
+var header=null;
+
+beforeAll(async () => {
     await mongoose.connect(process.env.MONGO_URI);
+    const user = await UsuarioController.getLogin("prueba@prueba.com", "1234");
+    this.loggedUser= await UsuarioController.generateTokenReponse(user);
+    this.header={"authorization":this.loggedUser.token,"user":this.loggedUser,};
 });
 
-afterEach(async () => {
+afterAll(async () => {
 await mongoose.connection.close();
 });
 
 describe("GET /pedidos", () => {
-    it("Verificar metodo obtener pedido Usuario Actual", async () => {
-        const res = await request(app).get("/productos").send(user)
-        .set(header);
-        expect(res.statusCode).toBe(200);
+    it("Verificar que el Usuario Actual no tiene pedidos", async () => {
+        const res = await request(app).get("/pedidos").send(this.loggedUser).set(this.header);
+        expect(res.statusCode).toBe(404);
     });
 });
