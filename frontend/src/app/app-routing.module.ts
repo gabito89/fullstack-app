@@ -13,6 +13,7 @@ import { CategoriasListPageComponent } from './components/pages/categorias-list-
 import { PerfilPageComponent } from './components/pages/perfil-page/perfil-page.component';
 import { AddCategoriaComponent } from './components/pages/add-categoria/add-categoria.component';
 import { ProductosListPageComponent } from './components/pages/productos-list-page/productos-list-page.component';
+import { AddProductoPageComponent } from './components/pages/add-producto-page/add-producto-page.component';
 
 const routes: Routes = [
   {path:'',component:HomeComponent,canActivate:[AuthGuard]},
@@ -29,6 +30,7 @@ const routes: Routes = [
   {path:'perfil', component: PerfilPageComponent, canActivate:[AuthGuard]},
   {path:'add-categoria', component: AddCategoriaComponent, canActivate:[AuthGuard]},
   {path:'productos-list', component: ProductosListPageComponent, canActivate:[AuthGuard]},
+  {path:'add-producto', component: AddProductoPageComponent, canActivate:[AuthGuard]},
 ];
 
 @NgModule({

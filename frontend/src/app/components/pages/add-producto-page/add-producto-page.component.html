@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="details">
+    <app-title title="Agregar Producto"></app-title>
+    <form [formGroup]="formularioRegistro" (ngSubmit)="submit()">
+      <text-input
+        [control]="fc.nombre"
+        [showErrorsWhen]="isSubmitted"
+        label="Nombre">
+      </text-input>
+      <text-input
+        [control]="fc.descripcion"
+        [showErrorsWhen]="isSubmitted"
+        label="Descripción">
+      </text-input>
+      <text-input
+        [control]="fc.precio"
+        [showErrorsWhen]="isSubmitted"
+        label="Precio">
+      </text-input>
+      <div class="select-container">
+        <label class="select-label">
+          Categoria
+        </label>
+        <div class="select-content">
+          <select formControlName="categoria_id" id="categoria_id">
+            <option *ngFor="let c of categorias" [ngValue]="c">{{c.nombre}}</option>
+          </select>
+        </div>
+      </div>
+    <default-button text="Agregar"></default-button>
+    </form>
+  </div>
+</div>

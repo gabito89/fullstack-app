@@ -32,6 +32,7 @@ import { CategoriasListPageComponent } from './components/pages/categorias-list-
 import { PerfilPageComponent } from './components/pages/perfil-page/perfil-page.component';
 import { AddCategoriaComponent } from './components/pages/add-categoria/add-categoria.component';
 import { ProductosListPageComponent } from './components/pages/productos-list-page/productos-list-page.component';
+import { AddProductoPageComponent } from './components/pages/add-producto-page/add-producto-page.component';
 
 
 @NgModule({
@@ -59,7 +60,8 @@ import { ProductosListPageComponent } from './components/pages/productos-list-pa
     CategoriasListPageComponent,
     PerfilPageComponent,
     AddCategoriaComponent,
-    ProductosListPageComponent
+    ProductosListPageComponent,
+    AddProductoPageComponent,
   ],
   imports: [
     BrowserModule,

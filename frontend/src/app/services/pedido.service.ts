@@ -23,7 +23,6 @@ export class PedidoService {
     return this.http.put<string>(PEDIDO_CONFIRMAR,order);
   }
   getPedidoSeguimiento():Observable<Pedido[]>{
-    console.log(PEDIDO_SEGUIMIENTO);
     return this.http.get<Pedido[]>(PEDIDO_SEGUIMIENTO);
   }
 }

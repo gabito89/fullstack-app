@@ -4,11 +4,6 @@ const categoriaSchema = new Schema({
 	nombre:{
 		type: String,
 		required:true
-    },
-    estado:{
-        type: Boolean,
-        required:true,
-        default:true
     }
 }, { timestamps: true } );
 

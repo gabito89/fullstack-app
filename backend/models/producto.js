@@ -21,11 +21,6 @@ const productoSchema = new Schema({
     precio:{
 		type: Number,
 		required:true
-	},
-	activo:{
-		type: Boolean,
-		required:true,
-		default:true
 	}
 }, { timestamps: true } ).set('toJSON',{
     transform: (document, object) => {

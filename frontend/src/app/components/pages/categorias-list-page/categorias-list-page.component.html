@@ -17,11 +17,7 @@
         {{categoria.nombre}}
       </td>
       <td>
-        <span *ngIf="categoria.estado">Activo</span>
-        <span *ngIf="!categoria.estado">Inactivo</span>
-      </td>
-      <td>
-        <div *ngIf="categoria.estado">
+        <div>
           <button class="remove-button" (click)="sacarCategoria(categoria._id)">
             Quitar
           </button>

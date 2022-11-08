@@ -50,7 +50,7 @@ const editProduct = async(product) => {
 
 const deleteProduct = async(id) => {
 
-    const result = await Producto.Producto.findOneAndUpdate(id,{$set:{activo:false}});
+    const result = await Producto.Producto.findByIdAndRemove(id);
 
     return result;
 }

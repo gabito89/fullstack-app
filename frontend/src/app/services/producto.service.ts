@@ -3,7 +3,8 @@ import {HttpClient} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Categoria } from '../shared/models/Categoria';
 import { Productos } from '../shared/models/Productos';
-import { PRODUCTOS_BY_NAME, PRODUCTOS_DELETE_BY_ID, PRODUCTOS_GET_BY_ID, PRODUCTOS_URL } from '../shared/constants/urls';
+import { PRODUCTOS_ADD_ONE, PRODUCTOS_BY_NAME, PRODUCTOS_DELETE_BY_ID, PRODUCTOS_GET_BY_ID, PRODUCTOS_URL } from '../shared/constants/urls';
+import { IProductoAdd } from '../shared/interfaces/IProductoAdd';
 
 @Injectable({
   providedIn: 'root'
@@ -23,5 +24,8 @@ export class ProductoService {
   }
   borrarProducto(id:String):Observable<string>{;
     return this.http.delete<string>(PRODUCTOS_DELETE_BY_ID + id);;
+  }
+  addProducto(producto:IProductoAdd): Observable<Productos>{
+    return this.http.post<Productos>(PRODUCTOS_ADD_ONE, producto);
   }
 }

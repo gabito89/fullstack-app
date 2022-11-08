@@ -71,7 +71,7 @@ const editCategory = async(category) => {
 
 const deleteCategory = async(id) => {
 
-    const result = await Categoria.Categoria.findByIdAndUpdate(id,{$set:{estado:false}},{new:true});
+    const result = await Categoria.Categoria.findByIdAndDelete(id);
     return result;
 }
 
